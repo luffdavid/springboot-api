@@ -1,6 +1,4 @@
-package com.davidtest.model;
-
-import java.util.Date;
+package com.financemanagement.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,16 +7,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "tasks")
+@Document(collection = "bankaccounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Task {
+public class Bankaccount {
     @Id
-    private String taskId;
-    private String title;
-    private boolean isCompleted;
-    private Date dueDate;
-    private String description;
-
+    private String bankAccId;
+    private String bankAccName;
+    private double bankAccCurrentAmount;
+    private String bankAccType;
 }

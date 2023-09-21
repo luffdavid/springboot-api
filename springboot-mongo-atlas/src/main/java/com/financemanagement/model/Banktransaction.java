@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Banktransactions {
+public class Banktransaction {
     @Id
     private String transactionId;
     private String transactionsName;

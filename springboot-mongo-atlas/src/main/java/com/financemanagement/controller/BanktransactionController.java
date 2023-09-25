@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.financemanagement.model.Banktransaction;
 import com.financemanagement.service.BanktransactionService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/banktransactions")
 public class BanktransactionController {
 
@@ -43,6 +46,26 @@ public class BanktransactionController {
                 return ResponseEntity.noContent().build(); // Keine Bankkonten vorhanden
             }
             return ResponseEntity.ok(banktransactions); // Erfolgreiche Antwort mit Bankkontenliste
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @GetMapping("/filterByName")
+    public ResponseEntity<List<Banktransaction>> getBanktransactionsByName(@RequestParam("name") String name) {
+        List<Banktransaction> banktrans = service.findByTransactionsName(name);
+        try {
+            return ResponseEntity.ok(banktrans);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @GetMapping("/filterByType")
+    public ResponseEntity<List<Banktransaction>> getBankaccountsByType(@RequestParam("type") String type) {
+        List<Banktransaction> banktrans = service.findByTransactionsType(type);
+        try {
+            return ResponseEntity.ok(banktrans);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

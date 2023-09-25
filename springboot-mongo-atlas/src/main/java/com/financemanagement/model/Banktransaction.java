@@ -15,9 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Banktransaction {
     @Id
-    private String transactionId;
-    private String transactionsName;
-    private String transactionsType;
-    private Date transactionsDate;
-    private double transactionsAmount;
+    private String transactionId; // generated ID
+    private String transactionsName; // e.g. Restaurant or Boat trip
+    private String transactionsType; // Income or Expense
+    private Date transactionsDate; // Date
+    private double transactionsAmount; // Amount in double
 }

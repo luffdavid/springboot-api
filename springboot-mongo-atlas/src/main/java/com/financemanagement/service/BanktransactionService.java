@@ -31,21 +31,15 @@ public class BanktransactionService {
         return banktransactionRepository.findById(banktransaction).get();
     }
 
-    // // Filter by Name
-    // public List<Bankaccount> findByBankaccountName(String bankaccName) {
-    // return banktransactionRepository.findByBankAccName(bankaccName);
-    // }
-
-    // // Filter by Amount
-    // public List<Bankaccount> findByBankAccountCurrentAmount(double bankaccAmount)
-    // {
-    // return banktransactionRepository.findByBankAccCurrentAmount(bankaccAmount);
-    // }
+    // Filter by Name
+    public List<Banktransaction> findByTransactionsName(String transactionName) {
+        return banktransactionRepository.findByTransactionsName(transactionName);
+    }
 
     // // Filter by Type
-    // public List<Bankaccount> findByBankAccType(String bankaccType) {
-    // return banktransactionRepository.findByBankAccType(bankaccType);
-    // }
+    public List<Banktransaction> findByTransactionsType(String transactionType) {
+        return banktransactionRepository.findByTransactionsType(transactionType);
+    }
 
     // UPDATE Banktrans
     public Banktransaction updateBanktransaction(Banktransaction banktransaction, String banktransactionId) {

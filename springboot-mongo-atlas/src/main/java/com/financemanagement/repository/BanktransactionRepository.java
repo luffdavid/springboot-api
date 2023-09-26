@@ -11,4 +11,6 @@ public interface BanktransactionRepository extends MongoRepository<Banktransacti
     List<Banktransaction> findByTransactionsName(String transactionName);
 
     List<Banktransaction> findByTransactionsType(String transactionsType);
+
+    List<Banktransaction> findByBankaccountId(String bankaccountId);
 }

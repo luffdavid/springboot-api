@@ -1,5 +1,6 @@
 package com.financemanagement.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,9 +22,18 @@ public class BanktransactionService {
         return banktransactionRepository.save(banktransaction);
     }
 
-    // Get all Transactions
     public List<Banktransaction> getBanktransactions() {
-        return banktransactionRepository.findAll();
+        List<Banktransaction> transactions = banktransactionRepository.findAll();
+
+        // Sort transactions based on transactionsDate
+        transactions.sort(new Comparator<Banktransaction>() {
+            @Override
+            public int compare(Banktransaction b1, Banktransaction b2) {
+                return b2.getTransactionsDate().compareTo(b1.getTransactionsDate());
+            }
+        });
+
+        return transactions;
     }
 
     // GET one banktrans by ID
@@ -36,9 +46,14 @@ public class BanktransactionService {
         return banktransactionRepository.findByTransactionsName(transactionName);
     }
 
-    // // Filter by Type
+    // Filter by Type
     public List<Banktransaction> findByTransactionsType(String transactionType) {
         return banktransactionRepository.findByTransactionsType(transactionType);
+    }
+
+    // Filter by bankaccount ID
+    public List<Banktransaction> findByBankaccountId(String bankaccountId) {
+        return banktransactionRepository.findByBankaccountId(bankaccountId);
     }
 
     // UPDATE Banktrans

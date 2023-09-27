@@ -21,7 +21,7 @@ import com.financemanagement.service.BankaccountService;
 
 @RestController
 @RequestMapping("/bankaccounts")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = { "http://localhost:3000", "https://mefinance.vercel.app" })
 public class BankaccountController {
 
     @Autowired

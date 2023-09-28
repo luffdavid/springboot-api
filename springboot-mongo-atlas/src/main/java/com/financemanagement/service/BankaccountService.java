@@ -21,9 +21,14 @@ public class BankaccountService {
         return bankaccountRepository.save(bankaccount);
     }
 
-    // Get all bankaccountd
+    // Get all bankaccounts
     public List<Bankaccount> getBankaccounts() {
         return bankaccountRepository.findAll();
+    }
+
+    // Get all bankaccount from user
+    public List<Bankaccount> getBankaccountsByUserId(String userId) {
+        return bankaccountRepository.findByUserId(userId);
     }
 
     // GET one bankacc by ID
@@ -54,6 +59,7 @@ public class BankaccountService {
         existingBankacc.setBankAccName(bankaccount.getBankAccName());
         existingBankacc.setBankAccType(bankaccount.getBankAccType());
         existingBankacc.setBankAccCurrentAmount(bankaccount.getBankAccCurrentAmount());
+        existingBankacc.setUserId(bankaccount.getUserId());
 
         return bankaccountRepository.save(existingBankacc);
     }

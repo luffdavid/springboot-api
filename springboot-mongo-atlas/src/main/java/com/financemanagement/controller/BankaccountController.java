@@ -50,6 +50,17 @@ public class BankaccountController {
         }
     }
 
+    // http://localhost:8080/bankaccounts/user?userId=$userId
+    @GetMapping("/user")
+    public ResponseEntity<List<Bankaccount>> getBankaccountsByUserId(@RequestParam("userId") String userId) {
+        List<Bankaccount> bankaccounts = service.getBankaccountsByUserId(userId);
+        try {
+            return ResponseEntity.ok(bankaccounts);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
     // http://localhost:8080/bankaccounts/filterByName?name=VR Bank
     @GetMapping("/filterByName")
     public ResponseEntity<List<Bankaccount>> getBankaccountsByName(@RequestParam("name") String name) {

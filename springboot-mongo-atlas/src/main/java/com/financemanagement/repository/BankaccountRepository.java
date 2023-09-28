@@ -12,4 +12,6 @@ public interface BankaccountRepository extends MongoRepository<Bankaccount, Stri
     List<Bankaccount> findByBankAccType(String bankaccType);
 
     List<Bankaccount> findByBankAccCurrentAmount(double bankaccAmount);
+
+    List<Bankaccount> findByUserId(String userId);
 }

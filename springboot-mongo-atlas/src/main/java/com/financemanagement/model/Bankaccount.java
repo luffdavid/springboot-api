@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Bankaccount {
     @Id
     private String bankAccId;
+    private String userId;
     private String bankAccName; // = name of bank , e.g. VR Bank
     private double bankAccCurrentAmount;
     private String bankAccType; // e.g. stocks or giro

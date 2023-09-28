@@ -33,7 +33,6 @@ public class BankaccountController {
             Bankaccount createdBankAccount = service.createBankaccount(bankacc);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdBankAccount);
         } catch (Exception e) {
-            System.out.println(e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
